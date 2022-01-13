@@ -12,11 +12,40 @@
         <h1>
           <%= title %>
         </h1>
-        <p>This is the placeholder for Team Activity 02</p>
+
+        <p>
+          <% if(message){ %> Error: <%= message %>!<% } %>
+        </p>
+
+        <form action="/ta02/add-user" method="POST">
+          <label>Enter New User
+            <input class="/form-inputs" type="text" name="newUser" />
+          </label>
+          <input class="form-buttons" type="submit" value="submit" />
+        </form>
+
+        <form action="/ta02/delete-user" method="POST">
+          <label>Delete Existing User
+            <input class="form-inputs" type="text" name="oldUser" />
+          </label>
+          <input class="form-buttons" type="submit" value="submit" />
+        </form>      
       </div>
     </div>
     <div class="container">
+      <% if(users.length != 0){ %>
 
+        <ul>
+
+          <% for(index in users){ %>
+
+            <li><%= users[index] %></li>
+
+            <% } %>
+
+        </ul>
+
+      <% } %>
     </div>
 
 
